@@ -7,6 +7,7 @@ import { useState } from "react";
 import { usePlan } from "../components/PlanProvider";
 
 const MyPlan = () => {
+
     const {
         plan,
         saved,
@@ -17,6 +18,7 @@ const MyPlan = () => {
     } = usePlan();
 
     const [activeTab, setActiveTab] = useState("today");
+    const [sortBy, setSortBy] = useState("duration");
 
     if (!loaded) {
         return (
@@ -27,6 +29,19 @@ const MyPlan = () => {
     }
 
     const currentList = activeTab === "today" ? plan : saved;
+
+    const sortByList = [...currentList].sort((a, b) => {
+        if (sortBy === "duration") {
+            return Number(a.duration || 0) - Number(b.duration || 0)
+        }
+        if (sortBy === "calories") {
+            Number(a.caloriesBurned || 0) - Number(b.caloriesBurned || 0)
+        }
+
+        if (sortBy === "rating") {
+            Number(a.rating || 0) - Number(b.rating || 0)
+        }
+    })
 
     const totalMinutes = plan.reduce(
         (total, workout) => total + Number(workout.duration || 0),
@@ -77,29 +92,51 @@ const MyPlan = () => {
                     </div>
                 </div>
 
-                <div className="mt-10 flex gap-2 border-b border-[#242424]">
-                    <button
-                        onClick={() => setActiveTab("today")}
-                        className={`px-4 py-3 text-sm font-bold ${activeTab === "today"
-                            ? "border-b-2 border-[#ccff00] text-[#ccff00]"
-                            : "text-zinc-500"
-                            }`}
-                    >
-                        Today's Plan
-                    </button>
+                <div className="mt-10 flex flex-row justify-between gap-2 border-b border-[#242424]">
+                    <div className="bg-gray-800 rounded-full">
+                        <button
+                            onClick={() => setActiveTab("today")}
+                            className={`px-4 py-3 text-sm font-bold m-1 ${activeTab === "today"
+                                ? "bg-[#ccff00] text-[#030400] rounded-full"
+                                : "text-zinc-500"
+                                }`}
+                        >
+                            Today's Plan
+                        </button>
 
-                    <button
-                        onClick={() => setActiveTab("saved")}
-                        className={`px-4 py-3 text-sm font-bold ${activeTab === "saved"
-                            ? "border-b-2 border-[#ccff00] text-[#ccff00]"
-                            : "text-zinc-500"
-                            }`}
-                    >
-                        Saved
-                    </button>
+                        <button
+                            onClick={() => setActiveTab("saved")}
+                            className={`px-4 py-3 text-sm font-bold ${activeTab === "saved"
+                                ? " bg-[#ccff00] text-[#030400] rounded-full"
+                                : "text-zinc-500"
+                                }`}
+                        >
+                            Saved
+                        </button>
+                    </div>
+                    {/* drop down manu */}
+
+                    <div>
+                        <select
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value)}
+                            className="appearance-none rounded-full border border-[#333] bg-[#111111] py-2 pl-4 pr-10 text-sm font-medium text-white outline-none focus:border-[#ccff00]"
+                        >
+                            <option value="duration">
+                                Duration
+                            </option>
+                            <option value="calories">
+                                Calories
+                            </option>
+                            <option value="rating">
+                                Rating
+                            </option>
+                        </select>
+
+                    </div>
                 </div>
 
-                {currentList.length === 0 ? (
+                {sortByList.length === 0 ? (
                     <div className="py-20 text-center">
                         <h2 className="text-2xl font-bold text-white">
                             Nothing here yet.
@@ -118,7 +155,7 @@ const MyPlan = () => {
                     </div>
                 ) : (
                     <div className="mt-8 space-y-4">
-                        {currentList.map((workout) => (
+                        {sortByList.map((workout) => (
                             <div
                                 key={workout.id}
                                 className="flex flex-col gap-5 rounded-2xl border border-[#242424] bg-[#111111] p-4 sm:flex-row sm:items-center"

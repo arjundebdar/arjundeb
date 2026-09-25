@@ -22,9 +22,9 @@ const Home = async () => {
       >
         <div className="mx-auto max-w-7xl">
           <div className="mb-10">
-            <p className="text-sm font-bold text-[#ccff00]">THE LIBRARY</p>
+            <p className="text-5xl  font-bold text-[#ccff00]">THE LIBRARY</p>
 
-            <h2 className="mt-2 text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2  font-black uppercase text-white sm:text-xl">
               Twelve lifts covering every major muscle group.
             </h2>
           </div>
