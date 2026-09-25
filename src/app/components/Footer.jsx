@@ -1,9 +1,9 @@
 const Footer = () => {
     return (
-        <footer className=" border-t border-[#242424] bg-[#0b0b0b] py-6 text-center 0 ">
+        <footer className=" border-t border-[#242424] bg-[#0b0b0b] container mx-auto ">
             <div className="flex justify-between gap-1 items-center justify-around container mx-auto">
-                <h2 className="uppercase">Fitlog</h2>
-                <p className="text-sm text-zinc-500">
+                <h2 className="text-xl font-black uppercase text-white">Fitlog</h2>
+                <p className=" text-2xl  text-white ">
                     © 2026 FitLog — Workout Library. Train hard, log honest.
                 </p>
             </div>
