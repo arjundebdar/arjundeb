@@ -30,8 +30,8 @@ const Navbar = () => {
                     <Link
                         href="/"
                         className={`rounded-full px-4 py-2 text-sm font-bold ${pathname === "/"
-                                ? "bg-[#ccff00] text-black"
-                                : "text-zinc-300 hover:text-white"
+                            ? "bg-[#ccff00] text-black"
+                            : "text-zinc-300 hover:text-white"
                             }`}
                     >
                         Workout
@@ -40,8 +40,8 @@ const Navbar = () => {
                     <Link
                         href="/my-plan"
                         className={`rounded-full px-4 py-2 text-sm font-bold ${pathname === "/my-plan"
-                                ? "bg-[#ccff00] text-black"
-                                : "text-zinc-300 hover:text-white"
+                            ? "bg-[#ccff00] text-black"
+                            : "text-zinc-300 hover:text-white"
                             }`}
                     >
                         My Plan

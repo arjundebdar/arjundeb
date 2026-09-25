@@ -35,12 +35,13 @@ const MyPlan = () => {
             return Number(a.duration || 0) - Number(b.duration || 0)
         }
         if (sortBy === "calories") {
-            Number(a.caloriesBurned || 0) - Number(b.caloriesBurned || 0)
+            return Number(a.caloriesBurned || 0) - Number(b.caloriesBurned || 0)
         }
 
         if (sortBy === "rating") {
-            Number(a.rating || 0) - Number(b.rating || 0)
+            return Number(a.rating || 0) - Number(b.rating || 0)
         }
+        return 0
     })
 
     const totalMinutes = plan.reduce(
@@ -93,11 +94,11 @@ const MyPlan = () => {
                 </div>
 
                 <div className="mt-10 flex flex-row justify-between gap-2 border-b border-[#242424]">
-                    <div className="bg-gray-800 rounded-full">
+                    <div>
                         <button
                             onClick={() => setActiveTab("today")}
-                            className={`px-4 py-3 text-sm font-bold m-1 ${activeTab === "today"
-                                ? "bg-[#ccff00] text-[#030400] rounded-full"
+                            className={`px-4 py-3 text-sm font-bold ${activeTab === "today"
+                                ? "border-b-2 border-[#ccff00] text-[#ccff00]"
                                 : "text-zinc-500"
                                 }`}
                         >
@@ -107,7 +108,7 @@ const MyPlan = () => {
                         <button
                             onClick={() => setActiveTab("saved")}
                             className={`px-4 py-3 text-sm font-bold ${activeTab === "saved"
-                                ? " bg-[#ccff00] text-[#030400] rounded-full"
+                                ? "border-b-2 border-[#ccff00] text-[#ccff00]"
                                 : "text-zinc-500"
                                 }`}
                         >
@@ -205,12 +206,12 @@ const MyPlan = () => {
                                                 onClick={() => {
                                                     markAsDone(workout.id);
                                                     toast.success(
-                                                        "Workout marked as done"
+                                                        "Marks the workout done"
                                                     );
                                                 }}
                                                 className="rounded-full bg-[#ccff00] px-4 py-2 text-sm font-bold text-black"
                                             >
-                                                Mark as Done
+                                                ✓ Mark as Done
                                             </button>
 
                                             <button
@@ -230,7 +231,7 @@ const MyPlan = () => {
                                             onClick={() => {
                                                 removeFromSaved(workout.id);
                                                 toast.success(
-                                                    "Workout removed from saved"
+                                                    "Removes the workout"
                                                 );
                                             }}
                                             className="rounded-full border border-red-500 px-4 py-2 text-sm text-red-400"
