@@ -94,11 +94,11 @@ const MyPlan = () => {
                 </div>
 
                 <div className="mt-10 flex flex-row justify-between gap-2 border-b border-[#242424]">
-                    <div>
+                    <div className="bg-gray-900 rounded-full">
                         <button
                             onClick={() => setActiveTab("today")}
                             className={`px-4 py-3 text-sm font-bold ${activeTab === "today"
-                                ? "border-b-2 border-[#ccff00] text-[#ccff00]"
+                                ? "rounded-full bg-gray-400 text-[#ffffff]"
                                 : "text-zinc-500"
                                 }`}
                         >
@@ -108,8 +108,8 @@ const MyPlan = () => {
                         <button
                             onClick={() => setActiveTab("saved")}
                             className={`px-4 py-3 text-sm font-bold ${activeTab === "saved"
-                                ? "border-b-2 border-[#ccff00] text-[#ccff00]"
-                                : "text-zinc-500"
+                                ? "rounded-full bg-gray-400 text-[#ffffff]"
+                                : "text-zinc-600"
                                 }`}
                         >
                             Saved
