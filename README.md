@@ -2,15 +2,6 @@
 
 FitLog is a modern, dark-themed workout library and workout planning application built with **Next.js**. It allows users to explore workouts, view detailed exercise information, create a daily workout plan, save workouts for later, and track completed exercises.
 
-## 🚀 Live Project
-
-**Live Link:** Add your deployed project URL here
-
-**GitHub Repository:** https://github.com/arjundebdar/arjundeb
-
----
-
-## ✨ Key Features
 
 ### 🏋️ 1. Workout Library
 
@@ -66,27 +57,8 @@ The entire application is responsive and works across mobile, tablet, and deskto
 - **React** — Building interactive user interfaces
 - **Tailwind CSS** — Styling and responsive design
 - **JavaScript** — Application logic
-- **Lucide React** — UI icons
 - **REST API** — Fetching workout data
 - **LocalStorage** — Persisting plan and saved workout data
-
----
-
-## 🔗 API
-
-FitLog uses the following API endpoints.
-
-### All Workouts
-
-```text
-https://api.abcz.workers.dev/api/fitlog
-```
-
-### Single Workout
-
-```text
-https://api.abcz.workers.dev/api/fitlog/:id
-```
 
 ---
 
@@ -129,16 +101,4 @@ The navigation, hero section, workout library, workout details, and My Plan page
 
 ---
 
-## 📌 Assignment
 
-This project was developed as part of the **Programming Hero B14-A6 FitLog** assignment.
-
-> **Train with intent. Log every set.**
-
----
-
-## 👨‍💻 Developer
-
-**Arjun Deb**
-
-Built with ❤️ using Next.js and Tailwind CSS.
