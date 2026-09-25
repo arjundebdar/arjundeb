@@ -1,12 +1,11 @@
 import Image from "next/image";
 import WorkoutActions from "../../components/WorkoutActions";
 
-const API_URL = "https://api.abcz.workers.dev/api/fitlog";
 
 const WorkoutDetails = async ({ params }) => {
     const { id } = await params;
 
-    const response = await fetch(`${API_URL}/${id}`);
+    const response = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
 
     if (!response.ok) {
         return <div>Workout not found</div>;
@@ -29,16 +28,7 @@ const WorkoutDetails = async ({ params }) => {
                 </div>
 
                 <div>
-                    <div className="flex flex-wrap gap-2">
-                        {workout.muscleGroups?.map((muscle) => (
-                            <span
-                                key={muscle}
-                                className="rounded-full bg-[#202020] px-3 py-1 text-xs text-zinc-300"
-                            >
-                                {muscle}
-                            </span>
-                        ))}
-                    </div>
+
 
                     <h1 className="mt-5 text-4xl font-black uppercase text-white sm:text-5xl">
                         {workout.name}
@@ -47,59 +37,69 @@ const WorkoutDetails = async ({ params }) => {
                     <p className="mt-5 leading-7 text-zinc-400">
                         {workout.description}
                     </p>
-
-                    <div className="mt-8 grid grid-cols-2 gap-4">
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">EQUIPMENT</p>
+                    <div className="flex flex-wrap gap-2 items-center">
+                        {workout.muscleGroups?.map((muscle) => (
+                            <span
+                                key={muscle}
+                                className="rounded-full bg-[#CCFF00] px-4 py-1 text-xl"
+                            >
+                                {muscle}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="mt-8 flex flex-col">
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">EQUIPMENT</p>
                             <p className="mt-1 font-bold text-white">
                                 {workout.equipment}
                             </p>
                         </div>
-
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">DIFFICULTY</p>
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">DIFFICULTY</p>
                             <p className="mt-1 font-bold text-white">
                                 {workout.difficulty}
                             </p>
                         </div>
 
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">SETS</p>
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">SETS</p>
                             <p className="mt-1 font-bold text-white">
                                 {workout.sets}
                             </p>
                         </div>
-
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">REPS</p>
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">REPS</p>
                             <p className="mt-1 font-bold text-white">
                                 {workout.reps}
                             </p>
                         </div>
 
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">DURATION</p>
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">DURATION</p>
                             <p className="mt-1 font-bold text-white">
-                                {workout.duration} min
+                                {workout.duration}min
                             </p>
                         </div>
 
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">CALORIES</p>
+
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">CALORIES</p>
                             <p className="mt-1 font-bold text-white">
-                                {workout.caloriesBurned} kcal
+                                {workout.caloriesBurned}kcal
                             </p>
                         </div>
 
-                        <div className="border border-[#242424] p-4">
-                            <p className="text-xs text-zinc-500">RATING</p>
+                        <div className="p-4 flex justify-between items-center">
+                            <p className="text-xl text-white">RATING</p>
                             <p className="mt-1 font-bold text-white">
-                                ★ {workout.rating}
+                                {workout.rating}
                             </p>
                         </div>
+
+
                     </div>
 
-                    <div className="mt-8">
+                    <div className="mt-8 ">
                         <h2 className="text-xl font-bold uppercase text-white">
                             Instructions
                         </h2>
